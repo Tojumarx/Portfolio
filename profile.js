@@ -34,12 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const updateScrollButtons = () => {
+        const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+        const scrollRightBtn = document.getElementById('scrollRightBtn');
+        
+        // Hide or show the left scroll button
         if (projectContainer.scrollLeft > 0) {
             scrollLeftBtn.classList.remove('hidden');
         } else {
             scrollLeftBtn.classList.add('hidden');
         }
 
+        // Hide or show the right scroll button
         if (projectContainer.scrollLeft + projectContainer.clientWidth >= projectContainer.scrollWidth - 1) {
             scrollRightBtn.classList.add('hidden');
         } else {
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Initial check and event listeners
     updateScrollButtons();
     projectContainer.addEventListener('scroll', updateScrollButtons);
     window.addEventListener('resize', updateScrollButtons);
