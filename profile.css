@@ -1,0 +1,36 @@
+:root {
+    color-scheme: light dark;
+    /* CSS variable to store header height for smooth scrolling */
+    --header-height: 0px; 
+}
+body {
+    font-family: 'Inter', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+    /* This property is the key to fixing the anchor link issue.
+        It tells the browser to add this much space at the top when scrolling to an anchor link. */
+    scroll-padding-top: calc(var(--header-height) + 20px);
+}
+/* Custom CSS for horizontal scrolling with scrollbar hidden */
+.project-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+/* For Chrome, Safari and Opera */
+.project-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+.project-card {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top;
+    width: 90%; /* Mobile width */
+}
+@media (min-width: 768px) {
+    .project-card {
+        width: calc(33.333% - 16px); /* Desktop width: 3 cards per row with margin */
+    }
+}
